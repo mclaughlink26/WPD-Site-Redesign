@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home | Walpole Police Department</title>
+    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="styles/typography.css">
+    <script src="js/script.js"></script>
+    <link rel="icon" href="images/WPD Patch Logo.png" type="image/png">
+
+    <!-- MaxCDN -->
+    <!-- Latest compiled and minified CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Bevan Font (Google Fonts) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bevan:ital@0;1&display=swap" rel="stylesheet">
+
+    <!-- Inter Font (Google Fonts) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+
+    <!-- Google Material Symbols Rounded (Google Fonts) -->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+    <style>
+        .material-symbols-rounded {
+            font-variation-settings:
+                'FILL' 0,
+                'wght' 400,
+                'GRAD' 0,
+                'opsz' 24
+        }
+    </style>
+
+    <script>
+        function pageLoad() {
+            const sideBar = document.getElementById("sideBar");
+            const mainPage = document.getElementById("mainPage");
+
+            addEventListener('resize', (event) => {
+                console.log(innerWidth);
+
+                if (innerWidth > 600) {
+                    sideBar.classList.replace("col-sm-4", "col-sm-3");
+                    mainPage.classList.replace("col-sm-8", "col-sm-9");
+                } else {
+                    sideBar.classList.replace("col-sm-3", "col-sm-4");
+                    mainPage.classList.replace("col-sm-9", "col-sm-8");
+                }
+            });
+
+            // Get the button
+            let mybutton = document.getElementById("btn-back-to-top");
+
+            // When the user scrolls down 20px from the top of the document, show the button
+            window.onscroll = function () {
+                scrollFunction();
+            };
+
+            function scrollFunction() {
+                if (
+                    document.body.scrollTop > 20 ||
+                    document.documentElement.scrollTop > 20
+                ) {
+                    mybutton.style.display = "block";
+                } else {
+                    mybutton.style.display = "none";
+                }
+            }
+            // When the user clicks on the button, scroll to the top of the document
+            mybutton.addEventListener("click", backToTop);
+
+            function backToTop() {
+                document.body.scrollTop = 0;
+                document.documentElement.scrollTop = 0;
+            }
+
+            // Get section header link
+            var sectTitle = document.getElementsByClassName("card-header"),
+                currentItem;
+
+            for (var i = sectTitle.length; i--;) {
+                currentItem = sectTitle[i];
+                currentItem.onclick = function (e) {
+                    // var ogUrl = document.location.href;
+
+                    // var urlSplit = ogUrl.split("/");
+                    // var name = urlSplit[urlSplit.length - 1].split("#")[0];
+
+                    let url = document.location.href + "#" + currentItem.id;
+
+                    navigator.clipboard.writeText(url).then(function () {
+                        document.getElementById("toast").classList.replace("hide", "show");
+                        document.getElementById("toast-header").innerHTML = "Link copied to clipboard!";
+                        document.getElementById("toast-text").innerHTML = '<a href="' + url + '" target="_blank">' + url + "</a>" + ": Copied to clipboard.";
+
+                        setTimeout(() => {
+                            document.getElementById("toast").classList.replace("show", "hide");
+                        }, 5000);
+
+                        // $('#toast').fadeOut('slow');
+                        // $('#toast').removeClass('show').addClass('hide');
+                    }, function () {
+                        alert('Copy error')
+                    });
+                };
+            }
+        }
+    </script>
+</head>
+
+<body class="inter-regular" onload="pageLoad()">
+    <!-- Back to top button -->
+    <button type="button" class="btn btn-primary btn-floating rounded-circle" id="btn-back-to-top">
+        <span class="material-symbols-rounded">arrow_upward</span>
+    </button>
+
+    <div class="toast hide sticky-bottom" id="toast" style="position: fixed; bottom: 1%; left: 1%;">
+        <div class="toast-header">
+            <strong class="me-auto" id="toast-header">Toast Header</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
+        </div>
+        <div class="toast-body">
+            <p id="toast-text">Some text inside the toast body</p>
+        </div>
+    </div>
+
+    <header>
+        <div>
+            <a class="site-logo" href="index.html">
+                <img class="site-logo-img" src="images/WPD Patch Logo.png" loading="lazy" alt="Home">
+            </a>
+            <h1 class="site-title bevan-regular">Walpole Police Department
+                <br><span class="inter-bold" style="text-align: left; float: left; font-size: small;"><small>Walpole,
+                        MA. est. 1721</small></span>
+            </h1>
+        </div>
+    </header>
+
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top w-100">
+        <div class="container-fluid">
+            <ul class="navbar-nav inter-regular">
+                <li class="nav-item">
+                    <a class="nav-link active" href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="about-us.html">About Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="records-forms.html">Records & Forms</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="javascript:void(0)">Programs & Initiatives</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="javascript:void(0)">Community Info</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="javascript:void(0)">Detectives</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="row p-0 m-0">
+        <div class="col-sm-4 p-4 m-0 bg-light border-end border-1" id="sideBar">
+            <h4 class="text-navy inter-bold">Records Requests</h4>
+            <p><a class="side-bar-link" href="records-request.html">Request Here</a></p>
+            <br>
+            <h4 class="text-navy inter-bold">Police Logs</h4>
+            <p><a class="side-bar-link" href="https://www.walpolepd.com/logs/wpd_press_log_thisweek.pdf">This Week:
+                    Police Log</a></p>
+            <br>
+            <h4 class="text-navy inter-bold">Property Disposal</h4>
+            <p><a class="side-bar-link" href="tel:5086603666">Phone: &lpar;508&rpar; 660-3666</a></p>
+            <p><a class="side-bar-link" href="https://www.walpolepd.com/detectives_main.html">Email: Click here</a>
+            </p>
+            <br>
+            <h4 class="text-navy inter-bold">Anonymous Tips</h4>
+            <p><a class="side-bar-link" href="https://www.walpolepd.com/logs/wpd_press_log_thisweek.pdf">This Week:
+                    Police Log</a></p>
+            <br>
+            <h4 class="text-navy inter-bold">News</h4>
+            <p><a class="side-bar-link" href="#do-not-knock">Do Not Knock List</a>
+                <br><small class="side-bar-link-desc"><em>Sign Up Now!</em></small>
+            </p>
+            <p><a class="side-bar-link" href="https://www.walpolepd.com/?reload#latestnews_6">Route 1A Project</a>
+                <br><small class="side-bar-link-desc"><em>Info & Detours</em></small>
+            </p>
+            <p><a class="side-bar-link" href="#notice-of-sale">Notice of Sale</a>
+                <br><small class="side-bar-link-desc"><em>Unclaimed Property</em></small>
+            </p>
+            <p><a class="side-bar-link" href="#walpole-camera-reg-prog">Camera
+                    Registration</a>
+                <br><small class="side-bar-link-desc"><em>New Program</em></small>
+            </p>
+            <p><a class="side-bar-link" href="#tel-emer-notif-sys">Emergency
+                    Notification</a>
+                <br><small class="side-bar-link-desc"><em>Sign-Up Information</em></small>
+            </p>
+            <p><a class="side-bar-link" href="#wpd-going-green">Going Green</a>
+                <br><small class="side-bar-link-desc"><em>WPD Moving to Paperless</em></small>
+            </p>
+            <p><a class="side-bar-link" href="https://www.walpolepd.com/past_news.html">WPD Recognized</a>
+                <br><small class="side-bar-link-desc"><em>Community Policing Work</em></small>
+            </p>
+            <p><a class="side-bar-link" href="https://www.walpolepd.com/past_news.html">Firearms Law</a>
+                <br><small class="side-bar-link-desc"><em>Important Notice From FRB</em></small>
+            </p>
+        </div>
+        <div class="col-sm-8 m-0 bg-white" id="mainPage">
+            <!-- Carousel -->
+            <div id="demo" class="carousel slide p-0 m-0" data-bs-ride="carousel">
+
+                <!-- Indicators/dots -->
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
+                    <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
+                    <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
+                    <button type="button" data-bs-target="#demo" data-bs-slide-to="3"></button>
+                    <button type="button" data-bs-target="#demo" data-bs-slide-to="4"></button>
+                    <button type="button" data-bs-target="#demo" data-bs-slide-to="5"></button>
+                    <button type="button" data-bs-target="#demo" data-bs-slide-to="6"></button>
+                    <button type="button" data-bs-target="#demo" data-bs-slide-to="7"></button>
+                    <button type="button" data-bs-target="#demo" data-bs-slide-to="8"></button>
+                    <button type="button" data-bs-target="#demo" data-bs-slide-to="9"></button>
+                    <button type="button" data-bs-target="#demo" data-bs-slide-to="10"></button>
+                    <button type="button" data-bs-target="#demo" data-bs-slide-to="11"></button>
+                    <button type="button" data-bs-target="#demo" data-bs-slide-to="12"></button>
+                    <button type="button" data-bs-target="#demo" data-bs-slide-to="13"></button>
+                    <button type="button" data-bs-target="#demo" data-bs-slide-to="14"></button>
+                    <button type="button" data-bs-target="#demo" data-bs-slide-to="25"></button>
+                    <button type="button" data-bs-target="#demo" data-bs-slide-to="16"></button>
+                    <button type="button" data-bs-target="#demo" data-bs-slide-to="17"></button>
+                    <button type="button" data-bs-target="#demo" data-bs-slide-to="18"></button>
+                    <button type="button" data-bs-target="#demo" data-bs-slide-to="19"></button>
+                    <button type="button" data-bs-target="#demo" data-bs-slide-to="20"></button>
+                    <button type="button" data-bs-target="#demo" data-bs-slide-to="21"></button>
+                    <button type="button" data-bs-target="#demo" data-bs-slide-to="22"></button>
+                    <button type="button" data-bs-target="#demo" data-bs-slide-to="23"></button>
+                    <button type="button" data-bs-target="#demo" data-bs-slide-to="24"></button>
+                </div>
+
+                <!-- The slideshow/carousel -->
+                <div class="carousel-inner p-0 pt-2 m-0">
+                    <div class="carousel-item active">
+                        <img src="images/slideshow/slide2022_1.jpg" alt="Chief Kelleher" class="d-block"
+                            style="width:100%" loading="lazy">
+                        <div class="carousel-caption">
+                            <p class="inter-medium">Chief Kelleher</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="images/slideshow/slide2022_2.jpg" alt="Visitors" class="d-block" style="width:100%"
+                            loading="lazy">
+                        <div class="carousel-caption">
+                            <p class="inter-medium">Visitors</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="images/slideshow/slide2022_3.jpg" alt="Cones With Cops" class="d-block"
+                            style="width:100%" loading="lazy">
+                        <div class="carousel-caption">
+                            <p class="inter-medium">Cones With Cops</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="images/slideshow/slide2022_4.jpg" alt="Emmanuel Day" class="d-block"
+                            style="width:100%" loading="lazy">
+                        <div class="carousel-caption">
+                            <p class="inter-medium">Emmanual Day</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="images/slideshow/slide2022_5.jpg" alt="Happy Halloween" class="d-block"
+                            style="width:100%" loading="lazy">
+                        <div class="carousel-caption">
+                            <p class="inter-medium">Happy Halloween</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="images/slideshow/slide2022_6.jpg" alt="Hi-5 Friday" class="d-block" style="width:100%"
+                            loading="lazy">
+                        <div class="carousel-caption">
+                            <p class="inter-medium">Hi-5 Friday</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="images/slideshow/slide2022_7.jpg" alt="Community Policing" class="d-block"
+                            style="width:100%" loading="lazy">
+                        <div class="carousel-caption">
+                            <p class="inter-medium">Community Policing</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="images/slideshow/slide2022_8.jpg" alt="Community Policing" class="d-block"
+                            style="width:100%" loading="lazy">
+                        <div class="carousel-caption">
+                            <p class="inter-medium">Community Policing</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="images/slideshow/slide2022_9.jpg" alt="Community Policing" class="d-block"
+                            style="width:100%" loading="lazy">
+                        <div class="carousel-caption">
+                            <p class="inter-medium">Community Policing</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="images/slideshow/slide2022_10.jpg" alt="School Supply Drive" class="d-block"
+                            style="width:100%" loading="lazy">
+                        <div class="carousel-caption">
+                            <p class="inter-medium">School Supply Drive</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="images/slideshow/slide2022_11.jpg" alt="We Lost" class="d-block" style="width:100%"
+                            loading="lazy">
+                        <div class="carousel-caption">
+                            <p class="inter-medium">We Lost</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="images/slideshow/slide2022_12.jpg" alt="We Tried" class="d-block" style="width:100%"
+                            loading="lazy">
+                        <div class="carousel-caption">
+                            <p class="inter-medium">We Tried</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="images/slideshow/slide2022_13.jpg" alt="We Lost Again" class="d-block"
+                            style="width:100%" loading="lazy">
+                        <div class="carousel-caption">
+                            <p class="inter-medium">We Lost Again</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="images/slideshow/slide2022_14.jpg" alt="Community Policing" class="d-block"
+                            style="width:100%" loading="lazy">
+                        <div class="carousel-caption">
+                            <p class="inter-medium">Community Policing</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="images/slideshow/slide2022_15.jpg" alt="School Resource Officer Week" class="d-block"
+                            style="width:100%" loading="lazy">
+                        <div class="carousel-caption">
+                            <p class="inter-medium">School Resource Officer Week</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="images/slideshow/slide2022_16.jpg" alt="Community Policing" class="d-block"
+                            style="width:100%" loading="lazy">
+                        <div class="carousel-caption">
+                            <p class="inter-medium">Community Policing</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="images/slideshow/slide2022_17.jpg" alt="Community Policing" class="d-block"
+                            style="width:100%" loading="lazy">
+                        <div class="carousel-caption">
+                            <p class="inter-medium">Community Policing</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="images/slideshow/slide2022_18.jpg" alt="Community Cookout" class="d-block"
+                            style="width:100%" loading="lazy">
+                        <div class="carousel-caption">
+                            <p class="inter-medium">Community Cookout</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="images/slideshow/slide2022_19.jpg" alt="Bike Safety (junior police)" class="d-block"
+                            style="width:100%" loading="lazy">
+                        <div class="carousel-caption">
+                            <p class="inter-medium">Bike Safety (junior police)</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="images/slideshow/slide2022_20.jpg" alt="Defense Class (junior police)" class="d-block"
+                            style="width:100%" loading="lazy">
+                        <div class="carousel-caption">
+                            <p class="inter-medium">Defense Class (junior police)</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="images/slideshow/slide2022_21.jpg" alt="K9 Class (junior police)" class="d-block"
+                            style="width:100%" loading="lazy">
+                        <div class="carousel-caption">
+                            <p class="inter-medium">K9 Class (junior police)</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="images/slideshow/slide2022_22.jpg" alt="Harbor Patrol (junior police)" class="d-block"
+                            style="width:100%" loading="lazy">
+                        <div class="carousel-caption">
+                            <p class="inter-medium">Harbor Patrol (junior police)</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="images/slideshow/slide2022_23.jpg" alt="Story Time" class="d-block" style="width:100%"
+                            loading="lazy">
+                        <div class="carousel-caption">
+                            <p class="inter-medium">Story Time</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="images/slideshow/slide2022_24.jpg" alt="Lemonade Time" class="d-block"
+                            style="width:100%" loading="lazy">
+                        <div class="carousel-caption">
+                            <p class="inter-medium">Lemonade Time</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="images/slideshow/slide2022_25.jpg" alt="Donut Time" class="d-block" style="width:100%"
+                            loading="lazy">
+                        <div class="carousel-caption">
+                            <p class="inter-medium">Donut Time</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Left and right controls/icons -->
+                <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon"></span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
+                    <span class="carousel-control-next-icon"></span>
+                </button>
+            </div>
+
+            <hr>
+
+            <div class="container-fluid" style="margin-top: 80px">
+                <div class="card">
+                    <div class="card-header inter-bold" id="do-not-knock">Do Not Knock List</div>
+                    <div class="card-body">
+                        <p class="m-0">
+                            The Walpole Police will begin a new public service for residents of Walpole, starting in
+                            January of 2024. We will be compiling a Do Not Knock List containing addresses of residents
+                            that would like to opt out of door to door solicitation by those individuals that have been
+                            issued a solicitor&apos;s permit by the Walpole Police. This list will be compiled annually,
+                            so if you register for this list you will have to renew your registration annually, each
+                            January 1st.
+                        </p>
+                        <br>
+                        <p class="m-0">
+                            If you would like your residence to be added to the town&apos;s Do Not Knock list, email
+                            your name, street address, apartment number and a phone number to <a class="inter-medium"
+                                href="mailto:donotknock@walpolepd.com">donotknock@walpolepd.com</a>. You will receive an
+                            email confirmation once your residence has been added to the list.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container-fluid" style="margin-top: 80px">
+                <div class="card">
+                    <div class="card-header inter-bold" id="notice-of-sale">Notice of Sale - Unclaimed Property</div>
+                    <div class="card-body">
+                        <p class="m-0">
+                            In accordance with Massachusetts General Law, the following unclaimed and abandoned property
+                            will be destroyed or sold by means of an online auction by the online police auction website
+                            <a class="inter-medium" href="propertyroom.com">propertyroom.com</a> beginning on or after
+                            <strong><em>March 9,
+                                    2022</em></strong>.
+                        </p>
+                        <br>
+                        <p class="m-0">
+                            <a class="inter-medium"
+                                href="https://www.walpolepd.com/forms/Notice%20of%20Sale%20Letter%20for%202.16.2022.pdf">List
+                                of Property</a>
+                        </p>
+                        <br>
+                        <p class="m-0">
+                            The items to be auctioned are in as-is condition and are in no way guaranteed or under
+                            warranty by the Walpole Police Department or the Town of Walpole. Any person who believes
+                            they may have unclaimed property being held by the Walpole Police Department &lpar;or is
+                            currently up for auction&rpar;, should contact the department immediately at <span
+                                class="inter-medium">&lpar;508&rpar; 668-1212</span> to determine if they have a claim
+                            to the property. Proof of ownership will be
+                            required.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container-fluid" style="margin-top: 80px">
+                <div class="card">
+                    <div class="card-header inter-bold" id="walpole-camera-reg-prog">Walpole Camera Registration Program
+                    </div>
+                    <div class="card-body">
+                        <p class="m-0">
+                            In an effort to continue our public safety partnership with citizens and businesses, the
+                            Walpole Police Department is offering a security camera registration program. The Walpole
+                            Camera Registry Program allows residents and business owners to voluntarily register the
+                            locations of their video surveillance systems with the Walpole Police Department. When a
+                            crime occurs, police will be able to identify the locations of nearby video cameras to
+                            obtain potential video surveillance. If necessary, police would ask Walpole Camera Registry
+                            Program participants to check their private video surveillance systems for a specific date
+                            and time for video that may show activity involved with a crime, and, if they so choose,
+                            participants can voluntarily provide copies of video footage to police for investigative
+                            purposes.
+                        </p>
+                        <br>
+                        <p class="m-0">
+                            See the registration form here for full details: <a class="inter-medium"
+                                href="https://www.walpolepd.com/forms/Camera%20Registration%20Program%20[registration%20form].pdf">Camera
+                                Registration Form</a>.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container-fluid" style="margin-top: 80px">
+                <div class="card">
+                    <div class="card-header inter-bold" id="tel-emer-notif-sys">Telephone Emergency Notification System
+                        &lbrack;RAVE 911&rbrack;
+                    </div>
+                    <div class="card-body">
+                        <p class="m-0">
+                            The Town of Walpole has a telephone Emergency Notification System. We use this system to
+                            notify residents and business owners in emergency situations, as deemed necessary. As such,
+                            if you receive a call from the Town of Walpole, the Walpole Fire, Police, Health or Public
+                            Works Departments, please listen to the message carefully.
+                        </p>
+                        <br>
+                        <p class="m-0">
+                            This system also has the capability to contact you through the following options: your
+                            listed home or business phone or your cell. At this time, emergency notification will only
+                            be made to your listed home or business address. If you would like to add an unlisted phone
+                            number, your cell phone or both, please follow the link below to the Town of Walpole
+                            website, and follow the instructions on the screen.
+                        </p>
+                        <br>
+                        <p class="m-0">
+                            Please do not hesitate to contact the Town Hall &lpar;<a class="inter-medium"
+                                href="tel:5086607289">&lpar;508&rpar; 660-7289</a>&rpar; with any questions you may
+                            have.
+                        </p>
+                        <br>
+                        <p class="m-0">
+                            <a class="inter-medium"
+                                href="https://www.smart911.com/smart911/ref/reg.action?pa=walpolema">Emergency
+                                Notification System - Sign Up Page</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container-fluid mb-5" style="margin-top: 80px">
+                <div class="card">
+                    <div class="card-header inter-bold" id="wpd-going-green">Walpole PD Is Going Green</div>
+                    <div class="card-body">
+                        <p class="m-0">
+                            We have gone green - Wherever possible the department will make all responses for records
+                            requests by email. This includes reports, voice recordings, and photographs. To make it
+                            easier, we have streamlined our process for requesting information, it's as easy as 1, 2, 3!
+                        </p>
+                        <br>
+                        <p class="my-0 ms-5">
+                            <span class="inter-extrabold">1 -</span> Simply go to <a class="inter-medium"
+                                href="www.walpolepd.com">www.walpolepd.com</a>.
+                            <br>
+                            <span class="inter-extrabold">2 -</span> Click on <kbd class="inter-medium"><a
+                                    class="text-white" href="records-request.html">Request
+                                    Here</a></kbd> in the top left corner.
+                            <br>
+                            <span class="inter-extrabold">3 -</span> Complete the form and press the <kbd
+                                class="inter-medium">Submit</kbd> button.
+                        </p>
+                        <br>
+                        <p class="m-0">
+                            That's it. By making this change, we hope to make it easier for the public to request
+                            information, easier for us to respond, and make the entire process more cost effective and
+                            efficient for all involved.
+                        </p>
+                        <br>
+                        <p class="m-0">
+                            <strong><span class="bevan-regular text-danger">*</span> Please keep in mind the law allows
+                                10 days to respond to a request for a report.</strong>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid pt-5 pb-3 px-5 bg-dark" id="footer">
+        <div class="container-fluid" style="margin-left: auto; margin-right: auto; align-content: center;">
+            <a href="index.html"><img src="images/WPD Patch Logo.png" height="150px" width="auto" loading="lazy"
+                    alt="Walpole Police Department"></a>
+            <p class="text-white inter-bold my-0 mx-3 pt-3" style="display: inline-block; vertical-align: top;">
+                <span style="text-align: center; font-size: x-large;">Walpole Police Department</span>
+                <br>
+                <span style="text-align: left;">50 South Street, Walpole, Massachusetts 02081</span>
+                <br>
+                <span class="text-secondary inter-medium"><span class="material-symbols-rounded"
+                        style="vertical-align: middle;">
+                        call
+                    </span> Phone: <a class="text-secondary" href="tel:5086681212">&lpar;508&rpar; 668-1212</a></span>
+                <br>
+                <span class="text-secondary inter-medium"><span class="material-symbols-rounded"
+                        style="vertical-align: middle;">
+                        fax
+                    </span> Fax: <a class="text-secondary" href="tel:5086601339">&lpar;508&rpar; 660-1339</a></span>
+                <br>
+                <span class="text-secondary inter-medium"><span class="material-symbols-rounded"
+                        style="vertical-align: middle;">
+                        email
+                    </span> Email: <a class="text-secondary"
+                        href="mailto:police1@walpolepd.com">police1@walpolepd.com</a></span>
+            </p>
+
+            <iframe class="map m-0 p-0"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1246.1977186178772!2d-71.25079758518008!3d42.13924884038392!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e47c3a95d1db1b%3A0xb89adc48a4618cf2!2sWalpole%20Police%20Department!5e1!3m2!1sen!2sus!4v1709764289326!5m2!1sen!2sus"
+                width="700" height="300" style="border: 0; border-radius: 25px;" allowfullscreen="" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+        <br>
+        <p class="text-secondary mb-0" id="copyright" style="text-align: center;"><small>Copyright &copy; 2024, Walpole
+                Police
+                Department, Redesigned by a WHS Web Design Student</small></p>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Records & Forms | Walpole Police Department</title>
+    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="styles/typography.css">
+    <link rel="icon" href="images/WPD Patch Logo.png" type="image/png">
+
+    <!-- MaxCDN -->
+    <!-- Latest compiled and minified CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Bevan Font (Google Fonts) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bevan:ital@0;1&display=swap" rel="stylesheet">
+
+    <!-- Inter Font (Google Fonts) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+
+    <!-- Google Material Symbols Rounded (Google Fonts) -->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+    <style>
+        .material-symbols-rounded {
+            font-variation-settings:
+                'FILL' 0,
+                'wght' 400,
+                'GRAD' 0,
+                'opsz' 24
+        }
+    </style>
+
+    <script>
+        function pageLoad() {
+            const sideBar = document.getElementById("sideBar");
+            const mainPage = document.getElementById("mainPage");
+
+            addEventListener('resize', (event) => {
+                console.log(innerWidth);
+
+                if (innerWidth > 600) {
+                    sideBar.classList.replace("col-sm-4", "col-sm-3");
+                    mainPage.classList.replace("col-sm-8", "col-sm-9");
+                } else {
+                    sideBar.classList.replace("col-sm-3", "col-sm-4");
+                    mainPage.classList.replace("col-sm-9", "col-sm-8");
+                }
+            });
+
+            // Get the button
+            let mybutton = document.getElementById("btn-back-to-top");
+
+            // When the user scrolls down 20px from the top of the document, show the button
+            window.onscroll = function () {
+                scrollFunction();
+            };
+
+            function scrollFunction() {
+                if (
+                    document.body.scrollTop > 20 ||
+                    document.documentElement.scrollTop > 20
+                ) {
+                    mybutton.style.display = "block";
+                } else {
+                    mybutton.style.display = "none";
+                }
+            }
+            // When the user clicks on the button, scroll to the top of the document
+            mybutton.addEventListener("click", backToTop);
+
+            function backToTop() {
+                document.body.scrollTop = 0;
+                document.documentElement.scrollTop = 0;
+            }
+
+            // Get section header link
+            var sectTitle = document.getElementsByClassName("card-header"),
+                currentItem;
+
+            for (var i = sectTitle.length; i--;) {
+                currentItem = sectTitle[i];
+                currentItem.onclick = function (e) {
+                    let url = document.location.href + "#" + currentItem.id;
+
+                    navigator.clipboard.writeText(url).then(function () {
+                        alert(url);
+                    }, function () {
+                        alert('Copy error')
+                    });
+                };
+            }
+        }
+    </script>
+</head>
+
+<body class="inter-regular" onload="pageLoad()">
+    <!-- Back to top button -->
+    <button type="button" class="btn btn-primary btn-floating rounded-circle" id="btn-back-to-top">
+        <span class="material-symbols-rounded">arrow_upward</span>
+    </button>
+
+    <header>
+        <div>
+            <a class="site-logo" href="index.html">
+                <img class="site-logo-img" src="images/WPD Patch Logo.png" loading="lazy" alt="Home">
+            </a>
+            <h1 class="site-title bevan-regular">Walpole Police Department
+                <br><span class="inter-bold" style="text-align: left; float: left; font-size: small;"><small>Walpole,
+                        MA. est. 1721</small></span>
+            </h1>
+        </div>
+    </header>
+
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top w-100">
+        <div class="container-fluid">
+            <ul class="navbar-nav inter-regular">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="about-us.html">About Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="records-forms.html">Records & Forms</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="javascript:void(0)">Programs & Initiatives</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="javascript:void(0)">Community Info</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="javascript:void(0)">Detectives</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="row p-0 m-0">
+        <div class="col-sm-4 p-4 m-0 bg-light border-end border-1" id="sideBar">
+            <h4 class="text-navy inter-bold">Police Reports</h4>
+            <p><a class="side-bar-link" href="records-forms.html#police-report-requests">Police
+                    Reports</a></p>
+            <br>
+            <h4 class="text-navy inter-bold">Public Records</h4>
+            <p><a class="side-bar-link" href="records-forms.html#public-records">Public
+                    Records</a></p>
+            <br>
+            <h4 class="text-navy inter-bold">Going Away?</h4>
+            <p><a class="side-bar-link" href="records-forms.html#going-away">Going Away?</a>
+            </p>
+            <br>
+            <h4 class="text-navy inter-bold">Firearms</h4>
+            <p><a class="side-bar-link" href="records-forms.html#firearms">Firearms</a></p>
+        </div>
+        <div class="col-sm-8 m-0 bg-white" id="mainPage">
+            <h2 class="text-navy inter-bold" style="margin-top: 80px;">Records, Forms & Applications</h2>
+
+            <hr>
+
+            <p class="my-5">
+                The Walpole Police Department handles a wide variety of applications, permits and records requests. To
+                make this process easier, we have included the forms below.
+            </p>
+
+            <div class="container-fluid" style="margin-top: 80px">
+                <div class="card">
+                    <div class="card-header inter-bold" id="police-report-requests">Police Report Requests</div>
+                    <div class="card-body">
+                        <p class="m-0">
+                            Click the link below to request a police report.
+                        </p>
+                        <br>
+                        <p class="m-0">
+                            <a class="inter-medium" href="records-request.html">Request a Police Report</a>
+                        </p>
+                        <br>
+                        <p class="m-0">
+                            <span class="inter-semibold"><small><em><span class="inter-bold text-danger">NOTE:</span> if
+                                        you are requesting a crash report, you MUST first complete, and submit the
+                                        Registry of Motor Vehicles Crash Form, which can be found
+                                        below.</em></small></span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container-fluid" style="margin-top: 80px">
+                <div class="card">
+                    <div class="card-header inter-bold" id="crash-reports">Crash Report</div>
+                    <div class="card-body">
+                        <p class="m-0">
+                            <a class="inter-medium"
+                                href="https://www.walpolepd.com/forms/CRASH102%20-%20Motor%20Vehicle%20Crash%20Operator%20Report_fillable_0124.pdf">Registry
+                                of Motor Vehicles Crash Report</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container-fluid" style="margin-top: 80px">
+                <div class="card">
+                    <div class="card-header inter-bold" id="public-records">Public Records &lpar;General&rpar;</div>
+                    <div class="card-body">
+                        <p class="m-0">
+                            <span class="inter-semibold text-navy">M.G. L. ch.66, §.10:</span> A request for public
+                            records may be delivered to the records access officer by hand or via first class mail at
+                            the record officer&apos;s business address, or via electronic mail to the <span
+                                class="inter-semibold text-decoration-underline">address posted by the agency</span> or
+                            municipality that the records access officer serves.
+                        </p>
+                        <br>
+                        <p class="my-0 ms-5">
+                            <span class="inter-semibold text-navy">&lpar;1&rpar;</span> All communications <span
+                                class="inter-semibold text-decoration-underline">shall be</span> addressed or delivered
+                            to:
+                        </p>
+                        <br>
+                        <p class="m-0 ms-5">
+                            Walpole Police Department
+                            <br><span class="inter-semibold text-danger">Attention:</span> Records Division
+                            <br>50 South Street
+                            <br>Walpole, MA 02081
+                            <br><a class="inter-medium" href="mailto:records@walpolepd.com">records@walpolepd.com</a>
+                        </p>
+                        <p class="m-0 ms-5">
+                            <span class="inter-semibold"><small>&lpar;<span
+                                        class="inter-bold text-danger">**</span>Please be advised, this is the only
+                                    email address that accepts public records requests. Emails sent to other addresses
+                                    may be delayed, or not received entirely.<span
+                                        class="inter-bold text-danger">**</span>&rpar;</small></span>
+                        </p>
+                        <br>
+                        <br>
+                        <p class="my-0 ms-5">
+                            <span class="inter-semibold text-navy">&lpar;2&rpar;</span> Division Business Hours. The
+                            regular hours of the Division are below. Electronic communication is strongly encouraged and
+                            is the preferred method of correspondence <span class="inter-medium"><em>&lbrack;950 CMR
+                                    32.03&lpar;1&rpar;&rbrack;</em></span>. An oral request made in person is permitted.
+                            A Records Access Officer is not permitted to require a written request, but may write an
+                            oral request on its own form to assist in prompt response.
+                        </p>
+                        <br>
+                        <p class="m-0 ms-5">
+                            Division Business Hours:
+                            <br>Monday, Wednesday & Friday
+                            <br>9:00am - 2:00pm
+                        </p>
+                        <br>
+                        <br>
+                        <p class="my-0 ms-5">
+                            <span class="inter-semibold text-navy">&lpar;3&rpar;</span> Computation of Time. Unless
+                            otherwise provided, the computation of time referred to in <span class="inter-medium">950
+                                CMR 32.00</span> shall begin with the first business day following the date of <span
+                                class="inter-semibold text-decoration-underline">receipt</span> of any request,
+                            regardless of physical form. The computation of time for an oral request shall begin with
+                            the day the oral request was made to the custodian <span
+                                class="inter-medium"><em>&lbrack;950 CMR 32.03&lpar;3&rpar;&rbrack;</em></span>.
+                        </p>
+                        <br>
+                        <br>
+                        <p class="my-0 ms-5">
+                            <span class="inter-semibold text-navy">&lpar;4&rpar;</span> A records access officer shall
+                            not require a particular form be used by requesters, but may make forms available for
+                            requesters <span class="inter-medium"><em>&lbrack;950 CMR
+                                    32.06&lpar;1&rpar;&lpar;d&rpar;&rbrack;</em></span>. The below electronically
+                            submitted form has been created to help facilitate a fast and efficient request process.
+                            Please click the link below, fill out the form and then hit the <span
+                                class="inter-medium">"Submit"</span> button.
+                        </p>
+                        <br>
+                        <p class="m-0 ms-5">
+                            <a class="inter-medium" href="records-request.html">Request a Public Record</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container-fluid" style="margin-top: 80px">
+                <div class="card">
+                    <div class="card-header inter-bold" id="firearms">Firearms</div>
+                    <div class="card-body">
+                        <p class="m-0">
+                            Whether you are looking for an FID card or a License To Carry a Firearm, everyone has to
+                            start in the same place; this application.
+                        </p>
+                        <br>
+                        <p class="m-0">
+                            <a class="inter-medium"
+                                href="https://www.walpolepd.com/forms/Firearms%20License%20[Application].pdf">Firearms
+                                License Application</a>
+                        </p>
+                        <br>
+                        <p class="m-0">
+                            <a class="inter-medium"
+                                href="https://www.walpolepd.com/forms/Firearms%20License%20[change%20of%20address].pdf">Firearms
+                                License Change of Address Form</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container-fluid" style="margin-top: 80px">
+                <div class="card">
+                    <div class="card-header inter-bold" id="citizen-commendations">Citizen Commendation/Complaint Forms</div>
+                    <div class="card-body">
+                        <p class="m-0">
+                            Citizens can file a report for a commendation or complaint against an employee, or the
+                            department as a whole, using the following forms.
+                        </p>
+                        <br>
+                        <p class="m-0">
+                            You can print the form out and fill it out by hand, or download it and complete it
+                            electronically. The completed forms can be mailed, emailed, or dropped off at the police
+                            station to the attention of the Deputy Chief.
+                        </p>
+                        <br>
+                        <p class="m-0">
+                            <a class="inter-medium"
+                                href="https://www.walpolepd.com/forms/Citizen%20Report%20[commendation].pdf">Citizen
+                                Report &lbrack;Commendation&rbrack;</a>
+                        </p>
+                        <br>
+                        <p class="m-0">
+                            <a class="inter-medium"
+                                href="https://www.walpolepd.com/forms/Citizen%20Report%20[complaint].pdf">Citizen Report
+                                &lbrack;Complaint&rbrack;</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container-fluid" style="margin-top: 80px">
+                <div class="card">
+                    <div class="card-header inter-bold" id="traffic-hazards">Traffic Hazards</div>
+                    <div class="card-body">
+                        <p class="m-0">
+                            Traffic Service Request Forms are used to request enforcement by the Walpole Police
+                            Department related to speeding vehicles or problem traffic areas. These forms can be mailed
+                            or dropped off at the police station.
+                        </p>
+                        <br>
+                        <p class="m-0">
+                            <a class="inter-medium"
+                                href="https://www.walpolepd.com/forms/Traffic%20Service%20Form.pdf">Traffic Enforcement
+                                Request</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container-fluid" style="margin-top: 80px">
+                <div class="card">
+                    <div class="card-header inter-bold" id="going-away">Going Away?</div>
+                    <div class="card-body">
+                        <p class="m-0">
+                            This form was created so residents can notify us of an upcoming vacation, and our officers
+                            can be aware that your home will be unoccupied for an extended period of time. We can then
+                            swing by and check to see that your house is secure while you are away. Print out the form
+                            below, complete it, and you can mail or hand deliver it to the police station.
+                        </p>
+                        <br>
+                        <p class="m-0">
+                            <a class="inter-medium" href="https://www.walpolepd.com/forms/Going%20Away%20Form.pdf">Going
+                                Away Form</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container-fluid" style="margin-top: 80px">
+                <div class="card">
+                    <div class="card-header inter-bold" id="solicitor-applications">Solicitor Application</div>
+                    <div class="card-body">
+                        <p class="m-0">
+                            In accordance with the Town of Walpole by-laws, every solicitor must register with the
+                            Walpole Police Department.
+                        </p>
+                        <br>
+                        <p class="m-0">
+                            <a class="inter-medium"
+                                href="https://www.walpolepd.com/forms/Solicitor%20Application%202020.pdf">Solicitor
+                                Application</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container-fluid" style="margin-top: 80px">
+                <div class="card">
+                    <div class="card-header inter-bold" id="safewatch-programs">SafeWatch Program</div>
+                    <div class="card-body">
+                        <p class="m-0">
+                            The family of those with a history of wandering can fill out this form and submit it to the
+                            Walpole Police Department. We can then put it on file, and will have updated information at
+                            our fingertips in the event of a missing person.
+                        </p>
+                        <br>
+                        <p class="m-0">
+                            <a class="inter-medium"
+                                href="https://www.walpolepd.com/forms/SafeWatch%20Program%20[emergency%20sheet].pdf">SafeWatch
+                                Program: Emergency Contact Form</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container-fluid" style="margin-top: 80px">
+                <div class="card">
+                    <div class="card-header inter-bold" id="walpole-camera-registration-programs">Walpole Camera Registration Program</div>
+                    <div class="card-body">
+                        <p class="m-0">
+                            In an effort to continue our public safety partnership with citizens and businesses, the
+                            Walpole Police Department is offering a security camera registration program. The Walpole
+                            Camera Registry Program allows residents and business owners to voluntarily register the
+                            locations of their video surveillance systems with the Walpole Police Department. When a
+                            crime occurs, police will be able to identify the locations of nearby video cameras to
+                            obtain potential video surveillance. If necessary, police would ask Walpole Camera Registry
+                            Program participants to check their private video surveillance systems for a specific date
+                            and time for video that may show activity involved with a crime, and, if they so choose,
+                            participants can voluntarily provide copies of video footage to police for investigative
+                            purposes.
+                        </p>
+                        <br>
+                        <p class="m-0">
+                            See the registration form here for full details: <a class="inter-medium"
+                                href="https://www.walpolepd.com/forms/Camera%20Registration%20Program%20[registration%20form].pdf">Camera
+                                Registration Form</a>.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container-fluid mb-5" style="margin-top: 80px">
+                <div class="card">
+                    <div class="card-header inter-bold" id="records-access-officers">Records Access Officer</div>
+                    <div class="card-body">
+                        <p class="m-0">
+                            <span class="inter-semibold text-navy">M.G. L. ch.66, §.6A&lpar;c&rpar;</span> Each agency
+                            and municipality shall post in a conspicuous location at its offices and on its website, if
+                            any, the name, title, business address, business telephone number, and business email
+                            address of each records access officer.
+                        </p>
+                        <br>
+                        <p class="my-0">
+                            If you have any questions about how to access public records from the Walpole Police
+                            Department, or if you need assistance in seeking public records, you can contact:
+                        </p>
+                        <br>
+                        <p class="m-0">
+                            Judy Ryan-Decker
+                            <br>Administrative Assistant
+                            <br>50 South Street
+                            <br>Walpole, MA 02081
+                            <br>Phone: <a class="inter-medium" href="tel:5086681212">&lpar;508&rpar; 668-1212</a>
+                            <br>Email: <a class="inter-medium"
+                                href="mailto:records@walpolepd.com">records@walpolepd.com</a>
+                            <br>Public Records Guidelines &lpar;to be completed by July 1, 2017&rpar;
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid pt-5 pb-3 px-5 bg-dark" id="footer">
+        <div class="container-fluid" style="margin-left: auto; margin-right: auto; align-content: center;">
+            <a href="index.html"><img src="images/WPD Patch Logo.png" height="150px" width="auto" loading="lazy" alt="Walpole Police Department"></a>
+            <p class="text-white inter-bold my-0 mx-3 pt-3" style="display: inline-block; vertical-align: top;">
+                <span style="text-align: center; font-size: x-large;">Walpole Police Department</span>
+                <br>
+                <span style="text-align: left;">50 South Street, Walpole, Massachusetts 02081</span>
+                <br>
+                <span class="text-secondary inter-medium"><span class="material-symbols-rounded"
+                        style="vertical-align: middle;">
+                        call
+                    </span> Phone: <a class="text-secondary" href="tel:5086681212">&lpar;508&rpar; 668-1212</a></span>
+                <br>
+                <span class="text-secondary inter-medium"><span class="material-symbols-rounded"
+                        style="vertical-align: middle;">
+                        fax
+                    </span> Fax: <a class="text-secondary" href="tel:5086601339">&lpar;508&rpar; 660-1339</a></span>
+                <br>
+                <span class="text-secondary inter-medium"><span class="material-symbols-rounded"
+                        style="vertical-align: middle;">
+                        email
+                    </span> Email: <a class="text-secondary"
+                        href="mailto:police1@walpolepd.com">police1@walpolepd.com</a></span>
+            </p>
+
+            <iframe class="map m-0 p-0"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1246.1977186178772!2d-71.25079758518008!3d42.13924884038392!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e47c3a95d1db1b%3A0xb89adc48a4618cf2!2sWalpole%20Police%20Department!5e1!3m2!1sen!2sus!4v1709764289326!5m2!1sen!2sus"
+                width="700" height="300" style="border: 0; border-radius: 25px;" allowfullscreen="" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+        <br>
+        <p class="text-secondary mb-0" id="copyright" style="text-align: center;"><small>Copyright &copy; 2024, Walpole
+                Police
+                Department, Redesigned by a WHS Web Design Student</small></p>
+    </div>
+</body>
+
+</html>
