@@ -1,0 +1,157 @@
+html {
+    scroll-behavior: smooth;
+}
+
+html,
+body {
+    overflow-x: hidden;
+}
+
+body {
+    cursor: default;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+:root {
+    --text-navy: #121b2a;
+    --text-navy-light: #141f31;
+    --text-primary: #0d6efd;
+    --text-secondary: #6c757d;
+}
+
+header {
+    padding: 20px;
+    text-align: center;
+    background-color: #121b2a;
+    color: white;
+    line-height: 1;
+}
+
+.site-logo {
+    text-align: left;
+    text-decoration: none;
+    text-decoration-style: none;
+    vertical-align: middle;
+    margin-right: 5px;
+}
+
+.site-logo:hover {
+    text-decoration: none;
+    text-decoration-style: none;
+}
+
+.site-logo-img {
+    height: 12vh;
+    min-height: 12vh;
+    width: fit-content;
+    vertical-align: middle;
+    position: relative;
+}
+
+.site-title {
+    font-size: 22pt;
+    display: inline-block;
+    height: auto;
+    vertical-align: middle;
+    cursor: default;
+}
+
+.container-fluid.mt-0 {
+    padding: 0;
+}
+
+.navbar {
+    font-size: clamp(13px, 2vw, 16px);
+}
+
+.text-navy {
+    color: var(--text-navy);
+    cursor: default;
+}
+
+.side-bar-link {
+    color: var(--text-secondary);
+    transition: all 0.2s ease;
+}
+
+.side-bar-link:hover {
+    color: var(--text-primary);
+}
+
+.side-bar-link-desc {
+    cursor: default;
+}
+
+.carousel-caption {
+    cursor: default;
+}
+
+.card-header {
+    color: var(--text-navy);
+}
+
+.map {
+    display: none;
+    float: right;
+}
+
+#copyright {
+    margin-top: 3rem;
+}
+
+@media only screen and (min-width: 1200px) {
+    .map {
+        display: inline-block;
+    }
+
+    #copyright {
+        margin-top: 10rem;
+    }
+}
+
+.form-label {
+    font-weight: 600;
+}
+
+.card-header {
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.card-header:hover {
+    color: var(--text-navy-light);
+    cursor: pointer;
+    text-decoration: underline;
+    transition: all 0.2s ease;
+}
+
+.card-header:hover::after {
+    content: "#";
+    margin-left: 5px;
+    color: var(--text-primary);
+    text-decoration: underline;
+    transition: all 0.2s ease;
+}
+
+#btn-back-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 10px;
+    display: none;
+    height: 50px;
+    width: 50px;
+    text-align: center;
+    z-index: 999;
+    opacity: 0.5;
+}
+
+#btn-back-to-top:hover {
+    opacity: 1;
+}
+
+#btn-back-to-top span {
+    vertical-align: middle;
+}
